@@ -45,8 +45,7 @@ jobs:
       deploy:
         provider: rubygems
         skip_cleanup: true
-        api_key:
-          secure: j4qYaUdtof7rmcFJ2AZ4kpuSG7KX2WfsE0+aS/HFLmAHQKM2dr6GhZ5tYziAp9QQ3XgB7Yhp8sE+DktkVMn4gjexylAIFyYyzbj+ObiFiTmg3i/Ip3pe9JL3HOxDKBK4qpRWlmHM+nPLCOwJmFd0YlbYUXcv4FCyHUrR1h3KP/mBw+eprX/h/Hvo5UsBPIpIQRH2AbQMxBjnMfZxwOAGF9jDsJJQXOafgdLdhXmiAlPxx9caDwwAJ8Ro+YIjJat5yHNTwKp3TdxOTHWhq+m4ZZuZyZeKdEuu0WlNpIOPaVENdfbNrlyTJgcMHUZoPDV30k47QXRBFXTm3dJrJh1gUAi5+O+YnS6zPLe61QQL0uhkKR3HF714FFVCMlM0rv8zVRpIeWvPuwHbDbYas/qF9g2pWMepjAON76Z1Bb58JxIGdUOCWZmD0WxDBIPqXp9n6l0OiwdusXgydv4eoEgB7ybPq30zYoQpiS5baqytECMVJaK0yMoY+RpFQE+KbvmDlWuFXSRS4niwfQbt5ceyS5Z/N6AaWxt0gpQ5ANJbPGVhcfQeTXGwNs9b0YbdvfFFctqXAS4ZOHgOWm/ZfCmsfsMgpT6Fc0p7ypbHFmfwTObSUZ4rYl/6OxIE8SK/huiCas7jSzIpsW9cIk4k/+neB2MwMxsXTBpS3eqCnAf+uVA=
+        api_key: $RUBYGEM_TOKEN
         gem: masb
         on:
           branch: master
