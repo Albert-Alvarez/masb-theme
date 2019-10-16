@@ -16,6 +16,16 @@ branches:
   - master
   - develop
 
+deploy:
+  provider: pages
+  local-dir: _site
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  target-branch: gh-pages
+  on:
+    branch: master
+
 env:
   matrix:
     - JEKYLL_VERSION="~> 3.5"
