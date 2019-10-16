@@ -2,6 +2,8 @@
 
 set -e
 
+scripts/build
+
 if test -e "./_site/index.html";then
   echo "It builds!"
   rm -Rf _site
