@@ -1,26 +1,42 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.6
-  - 2.4
+  - 2.6.0
 
 before_script:
  - chmod -R +x ./scripts/
 
 before_install: gem update --system
-install: script/bootstrap
-script: script/cibuild
+install: scripts/bootstrap
+script: scripts/cibuild
 
 branches:
   only:
   - master
   - develop
 
+deploy:
+  - provider: pages
+    local-dir: _site
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    target-branch: gh-pages
+    on:
+      branch: master
+      condition: $TRAVIS_PULL_REQUEST = false
+  - provider: rubygems
+    skip_cleanup: true
+    api_key:
+      secure: j4qYaUdtof7rmcFJ2AZ4kpuSG7KX2WfsE0+aS/HFLmAHQKM2dr6GhZ5tYziAp9QQ3XgB7Yhp8sE+DktkVMn4gjexylAIFyYyzbj+ObiFiTmg3i/Ip3pe9JL3HOxDKBK4qpRWlmHM+nPLCOwJmFd0YlbYUXcv4FCyHUrR1h3KP/mBw+eprX/h/Hvo5UsBPIpIQRH2AbQMxBjnMfZxwOAGF9jDsJJQXOafgdLdhXmiAlPxx9caDwwAJ8Ro+YIjJat5yHNTwKp3TdxOTHWhq+m4ZZuZyZeKdEuu0WlNpIOPaVENdfbNrlyTJgcMHUZoPDV30k47QXRBFXTm3dJrJh1gUAi5+O+YnS6zPLe61QQL0uhkKR3HF714FFVCMlM0rv8zVRpIeWvPuwHbDbYas/qF9g2pWMepjAON76Z1Bb58JxIGdUOCWZmD0WxDBIPqXp9n6l0OiwdusXgydv4eoEgB7ybPq30zYoQpiS5baqytECMVJaK0yMoY+RpFQE+KbvmDlWuFXSRS4niwfQbt5ceyS5Z/N6AaWxt0gpQ5ANJbPGVhcfQeTXGwNs9b0YbdvfFFctqXAS4ZOHgOWm/ZfCmsfsMgpT6Fc0p7ypbHFmfwTObSUZ4rYl/6OxIE8SK/huiCas7jSzIpsW9cIk4k/+neB2MwMxsXTBpS3eqCnAf+uVA=
+    gem: masb
+    on:
+      branch: master
+      condition: $TRAVIS_PULL_REQUEST = false
 env:
   matrix:
     - JEKYLL_VERSION="~> 3.5"
     - JEKYLL_VERSION="~> 3.8.0"
-    - JEKYLL_VERSION=">= 4.0.0"
 
 sudo: false # Route your build to the container-based infrastructure for a faster build
 
