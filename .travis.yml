@@ -23,6 +23,8 @@ jobs:
       script: scripts/cibuild
     - stage: gh page release
       rvm: 2.6.0
+      script: scripts/cibuild
+      env: JEKYLL_VERSION="~> 3.8.0"
       deploy:
         provider: pages
         local-dir: _site
@@ -35,6 +37,8 @@ jobs:
           condition: $TRAVIS_PULL_REQUEST = false
     - stage: gem release
       rvm: 2.6.0
+      script: scripts/cibuild
+      env: JEKYLL_VERSION="~> 3.8.0"
       deploy:
         provider: rubygems
         skip_cleanup: true
