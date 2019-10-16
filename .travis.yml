@@ -8,8 +8,8 @@ before_script:
  - chmod -R +x ./scripts/
 
 before_install: gem update --system
-install: script/bootstrap
-script: script/cibuild
+install: scripts/bootstrap
+script: scripts/cibuild
 
 branches:
   only:
@@ -25,6 +25,7 @@ deploy:
   target-branch: gh-pages
   on:
     branch: master
+    condition: $TRAVIS_PULL_REQUEST = false
 
 env:
   matrix:
