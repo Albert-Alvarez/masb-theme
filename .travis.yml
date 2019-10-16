@@ -1,0 +1,28 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.6
+  - 2.4
+
+before_script:
+ - chmod -R +x ./scripts/
+
+before_install: gem update --system
+install: script/bootstrap
+script: script/cibuild
+
+branches:
+  only:
+  - master
+  - develop
+
+env:
+  matrix:
+    - JEKYLL_VERSION="~> 3.5"
+    - JEKYLL_VERSION="~> 3.8.0"
+    - JEKYLL_VERSION=">= 4.0.0"
+
+sudo: false # Route your build to the container-based infrastructure for a faster build
+
+notifications:
+  email: false
